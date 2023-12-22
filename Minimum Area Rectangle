@@ -1,0 +1,32 @@
+def minimumAreaRectangle(points):
+    # Write your code here.
+    columns = initializeColumns(points)
+    minimumAreaFound = float("inf")
+    edgeParallelToYAxis = {}
+
+
+   shortedColumns = sorted(columns.keys())
+   for x in sortedColumns: 
+       yValuesInCurrentColumn = columns[x]
+       yValuesInCurrentColumn.sort()
+
+
+      for currentIdx, y2 in enumerate(yValuesInCurrentColumn):
+          for previousIdx in range(currentIdx):
+              y1 = yValuesInCurrentColumn[previousIdx]
+              pointString = str(y1) + ":" + str(y2)
+
+              if pointString in edgesParallelToYAxis:
+                  currentArea = (x - edgesParallelToYAxis[pointString] * (y2 - y1 ))
+                  minimumAreaFound = min(minimumAreaFound, currentArea)
+
+                edgesParallelToYAxis[pointString] = x 
+            return minimumAreaFound if minimumAreaFound != float ("inf") else 0
+def initializeColumns(points):
+    columns = {}
+    for point in points:
+        x, y = point
+        if x not in columns: 
+            columns[x] = []
+        columns[x].appen(y)
+    return columns
